@@ -1,20 +1,14 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
 import { loginSchema } from "../../schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
-
-
-
-export default function Hero({setLoggedIn}) {
-
-  {/* Background Image Change in Hero Section */}
+export default function Hero({ setLoggedIn }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [fadeIn, setFadeIn] = useState(false); // To control fade-in effect
+
   const heroContents = [
     {
       id: 1,
@@ -37,21 +31,14 @@ export default function Hero({setLoggedIn}) {
   // Change image every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setFadeIn(false); // Start fade-out
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) =>
-          prevIndex === heroContents.length - 1 ? 0 : prevIndex + 1
-        );
-        setFadeIn(true); // Start fade-in after image change
-      }, 500); // Delay to match the fade-out transition
-    }, 10000);
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === heroContents.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
 
     return () => clearInterval(interval); // Clear interval on unmount
   }, []);
 
-
-  {/* Validation For login Form */}
-  //  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -62,80 +49,68 @@ export default function Hero({setLoggedIn}) {
     resolver: zodResolver(loginSchema),
   });
 
-
   async function handleLogin(data) {
-    console.log(data)
+    console.log(data);
     setLoading(false);
-      toast.success("User Logged in Successfully");
-      reset();
-      setLoggedIn(true)
-      // router.push("/");
-  
-}
-
-{/* Validation end */}
+    toast.success("User Logged in Successfully");
+    reset();
+    setLoggedIn(true);
+  }
 
   return (
     <div className="w-screen lg:w-full h-screen">
       <section
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-          fadeIn ? "opacity-100" : "opacity-0"
-        }`}
+        className="absolute inset-0 transition-all duration-1000 ease-in-out"
         style={{
           backgroundImage: `url(${heroContents[currentImageIndex].imageUrl})`,
           backgroundPosition: "center", // Center the image
           backgroundSize: "cover", // Ensure the image covers the full section
-          opacity: 1,
         }}
       >
         {/* Login Hero Form */}
         <div className="w-[360px] sm:w-[400px] lg:w-[400px] h-full px-4 mx-auto sm:mx-4 lg:mx-36 text-center py-36 sm:py-36 lg:py-36">
-          <div className="h-auto px-8 pt-8 pb-4 bg-white dark:bg-slate-800 shadow-lg rounded-lg">
-            <h1 className="bg-blue-700 dark:bg-white w-[200px] text-slate-50 dark:text-slate-800 mx-auto px-8 py-2 text-lg font-semibold  rounded-xl ">
+          <div className="h-auto px-8 pt-8 pb-4 bg-transparent shadow-2xl z-50 lg:bg-white lg:dark:bg-slate-800 lg:shadow-lg rounded-lg">
+            <h1 className="bg-blue-700 dark:bg-white w-[200px] text-slate-50 dark:text-slate-800 mx-auto px-8 py-2 text-lg font-semibold rounded-xl ">
               Login Here
             </h1>
             <form onSubmit={handleSubmit(handleLogin)} className="mx-auto my-10">
               <div className="relative z-0 w-full mb-5 group">
                 <input
-                {...register("email")} 
+                  {...register("email")}
                   type="email"
                   id="floating_email"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-slate-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                 />
-                {
-                  errors.email?.message && (
-                    <p className="text-xs flex-start flex py-2 font-semibold text-red-700">
-                      *{errors.email?.message}
-                    </p>
-                  )
-                }
+                {errors.email?.message && (
+                  <p className="text-xs flex-start flex py-2 font-semibold text-red-700">
+                    *{errors.email?.message}
+                  </p>
+                )}
                 <label
                   htmlFor="floating_email"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 text-center dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-gray-500 text-center dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Email address
                 </label>
               </div>
               <div className="relative z-0 w-full mb-5 group">
                 <input
-                  {...register("password")} 
+                  {...register("password")}
                   type="password"
                   id="floating_password"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-slate-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                 />
-                {
-                  errors.password?.message && (
-                    <p className="text-xs flex-start flex  py-2 font-semibold text-red-700">
-                      *{errors.password?.message}
-                    </p>
-                  )
-                }
-                
+                {errors.password?.message && (
+                  <p className="text-xs flex-start flex  py-2 font-semibold text-red-700">
+                    *{errors.password?.message}
+                  </p>
+                )}
+
                 <label
                   htmlFor="floating_password"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Password
                 </label>
@@ -213,7 +188,6 @@ export default function Hero({setLoggedIn}) {
     </div>
   );
 }
-
 
 
 

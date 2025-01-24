@@ -18,8 +18,8 @@ import ThemeSwitcherBtn from "./ThemeSwitcherBtn";
 function Navbar({ loggedIn, setLoggedIn }) {
 
   return (
-    <div className="fixed w-full sm:w-full lg:w-full flex items-center justify-between sm:mx-4 sm:pr-20 text-slate-50 h-16 px-8 py-4 top-0 z-50  lg:px-32 ">
-      <div className="flex items-center space-x-2">
+    <div className="fixed w-full sm:w-full lg:w-full flex items-center justify-between sm:mx-4 sm:pr-20 text-slate-50 h-16 px-8 py-10 top-0 z-50  lg:px-32 lg:py-11 ">
+      <div className="flex items-center space-x-2 ">
       <Landmark className="w-6 h-6 sm:w-9 sm:h-9 lg:w-9 lg:h-9 text-slate-400"/>
       <Link href="#" className="lg:text-3xl sm:text-3xl font-semibold  text-slate-600 dark:text-slate-600">SMbank</Link>
       </div>
