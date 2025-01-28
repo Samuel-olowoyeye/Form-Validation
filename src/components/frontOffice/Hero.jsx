@@ -58,7 +58,7 @@ export default function Hero({ setLoggedIn }) {
   }
 
   return (
-    <div className="w-screen lg:w-full h-screen">
+    <div className="w-screen lg:w-full h-full">
       <section
         className="absolute inset-0 transition-all duration-1000 ease-in-out"
         style={{
@@ -69,7 +69,7 @@ export default function Hero({ setLoggedIn }) {
       >
         {/* Login Hero Form */}
         <div className="w-[360px] sm:w-[400px] lg:w-[400px] h-full px-4 mx-auto sm:mx-4 lg:mx-36 text-center py-36 sm:py-36 lg:py-36">
-          <div className="h-auto px-8 pt-8 pb-4 bg-transparent shadow-2xl z-50 lg:bg-white lg:dark:bg-slate-800 lg:shadow-lg rounded-lg">
+          <div className="h-auto px-8 pt-8 pb-4 bg-transparent shadow-2xl z-50 sm:bg-white sm:dark:bg-slate-800 sm:shadow-lg rounded-lg">
             <h1 className="bg-blue-700 dark:bg-white w-[200px] text-slate-50 dark:text-slate-800 mx-auto px-8 py-2 text-lg font-semibold rounded-xl ">
               Login Here
             </h1>
@@ -79,7 +79,7 @@ export default function Hero({ setLoggedIn }) {
                   {...register("email")}
                   type="email"
                   id="floating_email"
-                  className="block py-2.5 px-0 w-full text-sm text-slate-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-slate-700 dark:text-slate-700 sm:dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 sm:dark:focus:border-blue-500 dark:focus:border-slate-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                 />
                 {errors.email?.message && (
@@ -89,7 +89,7 @@ export default function Hero({ setLoggedIn }) {
                 )}
                 <label
                   htmlFor="floating_email"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 text-center dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-slate-700 font-semibold text-center dark:text-slate-700 sm:dark:text-white duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Email address
                 </label>
@@ -99,7 +99,7 @@ export default function Hero({ setLoggedIn }) {
                   {...register("password")}
                   type="password"
                   id="floating_password"
-                  className="block py-2.5 px-0 w-full text-sm text-slate-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-slate-700 dark:text-slate-700 sm:dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600  sm:dark:border-gray-600 sm:dark:focus:border-blue-500 dark:focus:border-slate-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                 />
                 {errors.password?.message && (
@@ -110,7 +110,7 @@ export default function Hero({ setLoggedIn }) {
 
                 <label
                   htmlFor="floating_password"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-slate-700 dark:text-slate-700 sm:dark:text-white font-semibold duration-300 transform -translate-y-6 scale-75 top-3 left-0 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Password
                 </label>
@@ -122,7 +122,7 @@ export default function Hero({ setLoggedIn }) {
                       id="remember"
                       type="checkbox"
                       value=""
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-50 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
                     />
                   </div>
                   <label
